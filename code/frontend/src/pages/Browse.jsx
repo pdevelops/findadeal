@@ -23,17 +23,22 @@ export default function Browse() {
   const [loading, setLoading] = useState(true)
   const [error, setError]     = useState(null)
   const [input, setInput]     = useState(keyword)
+  const [slowLoading, setSlowLoading] = useState(false)
 
   const load = useCallback(async () => {
     setLoading(true)
     setError(null)
+    setSlowLoading(false)
+    const slowTimer = setTimeout(() => setSlowLoading(true), 4000)
     try {
       const result = await listings.search({ keyword, page, sort })
       setData(result)
     } catch (e) {
       setError(e.message)
     } finally {
+      clearTimeout(slowTimer)
       setLoading(false)
+      setSlowLoading(false)
     }
   }, [keyword, page, sort])
 
@@ -129,6 +134,15 @@ export default function Browse() {
           <p className="page-state-title">Couldn't load listings</p>
           <p className="page-state-body">{error}</p>
           <button className="btn btn-secondary" onClick={load}>Retry</button>
+        </div>
+      )}
+
+      {/* cold-start notice */}
+      {loading && slowLoading && (
+        <div className="page-state">
+          <p className="page-state-body">
+            Waking up the demo server — first load can take up to a minute on the free tier.
+          </p>
         </div>
       )}
 

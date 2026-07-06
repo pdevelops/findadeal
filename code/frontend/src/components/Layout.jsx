@@ -12,9 +12,14 @@ export default function Layout({ children }) {
         <div className="nav-inner">
           <Link to="/" className="nav-brand">
             <span className="nav-brand-mark">
-              <span className="nav-brand-letter">D</span>
-              <span className="nav-brand-text">Deal Detection Platform</span>
+              <svg viewBox="0 0 200 200" width="22" height="22" aria-hidden="true">
+                <polygon points="28,56 172,56 150,74 50,74" fill="#B98FCB" />
+                <polygon points="50,74 86,74 100,176" fill="#8A5C92" />
+                <polygon points="86,74 114,74 100,176" fill="#D2B2DF" />
+                <polygon points="114,74 150,74 100,176" fill="#4E2456" />
+              </svg>
             </span>
+            <span className="nav-brand-text">deals</span>
           </Link>
 
           <nav className="nav-links">

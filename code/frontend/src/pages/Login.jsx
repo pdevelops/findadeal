@@ -32,6 +32,10 @@ export default function Login() {
           <p className="auth-subtitle">Access your watchlists and saved deals</p>
         </div>
 
+        <p className="auth-demo-hint">
+          Just looking around? Sign in with <code>demo</code> / <code>demo123</code> to explore a pre-loaded account.
+        </p>
+
         <form className="auth-form" onSubmit={handleSubmit}>
           <div className="field">
             <label className="field-label" htmlFor="username">Username</label>

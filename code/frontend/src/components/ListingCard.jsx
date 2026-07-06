@@ -10,6 +10,7 @@ const SOURCE_LABELS = {
   gumtree:              'Gumtree',
   ebay:                 'eBay',
   craigslist:           'Craigslist',
+  'demo-seed':          'Marketplace',
 }
 
 export function formatSource(source) {

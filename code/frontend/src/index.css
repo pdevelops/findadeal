@@ -14,10 +14,10 @@
   --text-2:       #555555;
   --text-3:       #999999;
 
-  --accent:       #e5383b;
-  --accent-hover: #c72b2e;
-  --accent-bg:    rgba(229, 56, 59, 0.07);
-  --accent-bd:    rgba(229, 56, 59, 0.2);
+  --accent:       #8A4C90;
+  --accent-hover: #4E2456;
+  --accent-bg:    rgba(138, 76, 144, 0.07);
+  --accent-bd:    rgba(138, 76, 144, 0.2);
 
   --green:        #16a34a;
   --green-bg:     rgba(22, 163, 74, 0.07);
@@ -114,6 +114,9 @@ button, input, select, textarea { font: inherit; }
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   flex-shrink: 0;
   text-decoration: none;
 }
@@ -121,46 +124,18 @@ button, input, select, textarea { font: inherit; }
 .nav-brand-mark {
   display: flex;
   align-items: center;
-  height: 26px;
-  width: 26px;
-  overflow: hidden;
-  border-radius: var(--r-sm);
-  background: linear-gradient(135deg, #e5383b 0%, #ff8080 100%);
-  color: white;
-  box-shadow: 0 1px 4px rgba(229, 56, 59, 0.3);
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
-}
-
-.nav-brand:hover .nav-brand-mark {
-  width: 186px;
-}
-
-.nav-brand-letter {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  height: 22px;
+  width: 22px;
   flex-shrink: 0;
-  font-size: 0.72rem;
-  font-weight: 800;
 }
 
 .nav-brand-text {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 700;
   letter-spacing: -0.01em;
-  padding-right: 10px;
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.18s ease 0.15s, transform 0.18s ease 0.15s;
+  color: var(--accent);
   flex-shrink: 0;
-}
-
-.nav-brand:hover .nav-brand-text {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 .nav-links {
@@ -738,6 +713,22 @@ button, input, select, textarea { font: inherit; }
 }
 
 .auth-subtitle { font-size: 0.86rem; color: var(--text-2); }
+
+.auth-demo-hint {
+  margin-top: 16px;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  color: var(--text-2);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-bd);
+  border-radius: var(--r-md);
+}
+
+.auth-demo-hint code {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--accent);
+}
 
 .auth-form { display: flex; flex-direction: column; gap: 14px; }
 

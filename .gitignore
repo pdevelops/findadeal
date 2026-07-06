@@ -22,3 +22,12 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Superpowers subagent-driven-development scratch state
+.superpowers/
+docs/superpowers/plans/2026-06-21-deal-detector-readme.md
+docs/superpowers/plans/2026-07-06-hosted-demo.md
+docs/superpowers/plans/2026-07-06-purple-brand.md
+docs/superpowers/specs/2026-06-21-deal-detector-readme-design.md
+docs/superpowers/specs/2026-07-06-hosted-demo-design.md
+docs/superpowers/specs/2026-07-06-purple-brand-design.md

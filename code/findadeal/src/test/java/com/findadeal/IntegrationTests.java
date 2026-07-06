@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -70,6 +71,19 @@ class IntegrationTests {
                 .andExpect(jsonPath("$.size").value(20))
                 .andExpect(jsonPath("$.totalPages").exists())
                 .andExpect(jsonPath("$.matches").isArray());
+    }
+
+    @Test
+    void corsAllowsConfiguredOrigin() throws Exception {
+        mockMvc.perform(get("/listings").header("Origin", "http://localhost:5173"))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:5173"));
+    }
+
+    @Test
+    void corsRejectsUnknownOrigin() throws Exception {
+        mockMvc.perform(get("/listings").header("Origin", "https://evil.example.com"))
+                .andExpect(header().doesNotExist("Access-Control-Allow-Origin"));
     }
 
     private String registerAndGetToken(String username) throws Exception {

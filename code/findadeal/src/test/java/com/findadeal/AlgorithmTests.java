@@ -4,10 +4,11 @@ import com.findadeal.deal.dto.DealMatchesResponse;
 import com.findadeal.common.exception.BadRequestException;
 import com.findadeal.listing.Listing;
 import com.findadeal.listing.ListingRepository;
+import com.findadeal.listing.ListingService;
 import com.findadeal.deal.DealMatchingService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.PageImpl;
@@ -28,8 +29,17 @@ class AlgorithmTests {
     @Mock
     private ListingRepository listingRepository;
 
-    @InjectMocks
+    private ListingService listingService;
     private DealMatchingService dealMatchingService;
+
+    @BeforeEach
+    void setUp() {
+        // ListingService is a concrete class; wiring a real instance over the
+        // mocked repository avoids Mockito's inline mock maker, which can't
+        // instrument concrete classes on newer JDKs.
+        listingService = new ListingService(listingRepository);
+        dealMatchingService = new DealMatchingService(listingRepository, listingService);
+    }
 
     @Test
     void sortedMatchesBelowCutoff() {
