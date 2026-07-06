@@ -47,8 +47,9 @@ export default function Watchlists() {
     setListError(null)
     try {
       const data = await api.list(token)
-      setList(data)
-      if (data.length > 0 && !selected) setSelected(data[0])
+      const loaded = data.content ?? data
+      setList(loaded)
+      if (loaded.length > 0 && !selected) setSelected(loaded[0])
     } catch (e) {
       setListError(e.message)
     } finally {
